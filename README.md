@@ -7,7 +7,7 @@ The basket can be modified using the individual request inputs. The user interfa
 
 Whilst this functionality could be achieved with JavaScript alone, I wanted to explore AWS Lambda and .NET Core. So the decision was made to go serverless compute for data modifications.
 
-- Portfolio Repository (https://github.com/fsereno/portfolio)
+- Portfolio Repository (https://github.com/fsereno/portfolio//tree/master/app/app_awsDotNetCoreShoppingCart)
 
 ### Project commands ###
 

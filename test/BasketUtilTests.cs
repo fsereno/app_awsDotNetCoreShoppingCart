@@ -9,9 +9,9 @@ namespace Utils.Tests
 {
     public class BasketUtilTests
     {
-        private IBasketUtil _sut;
+        private readonly IBasketUtil _sut;
 
-        private Mock<ILogger<BasketUtil>> _logger;
+        private readonly Mock<ILogger<BasketUtil>> _logger;
 
         public BasketUtilTests()
         {
@@ -28,7 +28,9 @@ namespace Utils.Tests
                 new Item() { Name = "Apple" },
                 new Item() { Name = "Banana" }
             };
+
             var result = _sut.TryRange(2, collection, out position);
+
             Assert.True(result);
             Assert.Equal(1, position);
         }
@@ -42,7 +44,9 @@ namespace Utils.Tests
                 new Item() { Name = "Apple" },
                 new Item() { Name = "Banana" }
             };
+
             var result = _sut.TryRange(3, collection, out position);
+
             Assert.False(result);
             Assert.Equal(2, position);
         }
@@ -56,7 +60,9 @@ namespace Utils.Tests
                 new Item() { Name = "Apple" },
                 new Item() { Name = "Banana" }
             };
+
             var result = _sut.TryRange(0, collection, out position);
+
             Assert.False(result);
             Assert.Equal(-1, position);
         }
@@ -67,6 +73,7 @@ namespace Utils.Tests
             var position = 0;
             var collection = new List<Item>();
             var result = _sut.TryRange(1, collection, out position);
+
             Assert.False(result);
             Assert.Equal(-1, position);
         }
@@ -80,7 +87,9 @@ namespace Utils.Tests
                 new Item() { Name = "Apple" },
                 new Item() { Name = "Banana" }
             };
+
             var result = _sut.TryRange(2, collection, out position);
+
             VerifyLogger(LogLevel.Information, "Started checking index is in range");
             VerifyLogger(LogLevel.Information, "Finished checking index is in range");
         }
@@ -94,7 +103,9 @@ namespace Utils.Tests
                 new Item() { Name = "Apple" },
                 new Item() { Name = "Banana" }
             };
+
             var result = _sut.GetItems(requestItems, localItems);
+
             Assert.Equal(2, result.Count);
         }
 
@@ -108,7 +119,9 @@ namespace Utils.Tests
                 new Item() { Name = "Pear" }
             };
             var localItems = new List<Item>();
+
             var result = _sut.GetItems(requestItems, localItems);
+
             Assert.Equal(3, result.Count);
         }
 
@@ -126,7 +139,9 @@ namespace Utils.Tests
                 new Item() { Name = "Apple" },
                 new Item() { Name = "Banana" }
             };
+
             var result = _sut.GetItems(requestItems, localItems);
+
             Assert.Equal(3, result.Count);
         }
 
@@ -140,7 +155,9 @@ namespace Utils.Tests
                 new Item() { Name = "Pear" }
             };
             var localItems = new List<Item>();
+
             var result = _sut.GetItems(requestItems, localItems);
+
             VerifyLogger(LogLevel.Information, "Started getting itmes");
             VerifyLogger(LogLevel.Information, "Finished getting itmes");
         }

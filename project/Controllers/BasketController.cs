@@ -10,7 +10,7 @@ namespace aws.Controllers
     [Route("api/[controller]")]
     public class BasketController : ControllerBase
     {
-        private List<Item> _items { get; set; }
+        private readonly List<Item> _items;
         private readonly IBasketUtil _basketUtil;
 
         public BasketController(IBasketUtil basketUtil)

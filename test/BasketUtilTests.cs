@@ -1,15 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Moq;
 using Xunit;
-using Amazon.Lambda.Core;
-using Amazon.Lambda.TestUtilities;
-using Amazon.Lambda.APIGatewayEvents;
-using Newtonsoft.Json;
-using aws;
-
 using Utils;
 using Models;
 
@@ -19,9 +12,12 @@ namespace Utils.Tests
     {
         private IBasketUtil _sut;
 
+        private Mock<ILogger<BasketUtil>> _logger;
+
         public BasketUtilTests()
         {
-            _sut = new BasketUtil();
+            _logger = new Mock<ILogger<BasketUtil>>();
+            _sut = new BasketUtil(_logger.Object);
         }
 
         [Fact]

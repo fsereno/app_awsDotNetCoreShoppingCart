@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
-using Utils;
 using Models;
 
 namespace Utils.Tests
@@ -73,6 +72,20 @@ namespace Utils.Tests
         }
 
         [Fact]
+        public void Test_IsInRange_Verify_Logging_Occurs()
+        {
+            var position = 0;
+            var collection = new List<Item>()
+            {
+                new Item() { Name = "Apple" },
+                new Item() { Name = "Banana" }
+            };
+            var result = _sut.TryRange(2, collection, out position);
+            VerifyLogger(LogLevel.Information, "Started checking index is in range");
+            VerifyLogger(LogLevel.Information, "Finished checking index is in range");
+        }
+
+        [Fact]
         public void Test_GetItems_EmptyRequest()
         {
             var requestItems = new List<Item>();
@@ -115,6 +128,32 @@ namespace Utils.Tests
             };
             var result = _sut.GetItems(requestItems, localItems);
             Assert.Equal(3, result.Count);
+        }
+
+        [Fact]
+        public void Test_GetItems_Verify_Logging_Occurs()
+        {
+            var requestItems = new List<Item>()
+            {
+                new Item() { Name = "Apple" },
+                new Item() { Name = "Banana" },
+                new Item() { Name = "Pear" }
+            };
+            var localItems = new List<Item>();
+            var result = _sut.GetItems(requestItems, localItems);
+            VerifyLogger(LogLevel.Information, "Started getting itmes");
+            VerifyLogger(LogLevel.Information, "Finished getting itmes");
+        }
+
+        private void VerifyLogger(LogLevel expectedLogLevel, string expectedMessage = "")
+        {
+            _logger.Verify(
+                x => x.Log(
+                    It.Is<LogLevel>(l => l == expectedLogLevel),
+                    It.IsAny<EventId>(),
+                    It.Is<It.IsAnyType>((v, t) => String.IsNullOrEmpty(expectedMessage) ? true : v.ToString() == expectedMessage),
+                    It.IsAny<Exception>(),
+                    It.Is<Func<It.IsAnyType, Exception, string>>((v, t) => true)));
         }
     }
 }

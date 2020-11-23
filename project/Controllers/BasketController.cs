@@ -26,7 +26,6 @@ namespace aws.Controllers
         [HttpPost("get")]
         public IList<Item> Get([FromBody]GetRequest request)
         {
-            SetResponseHeaders();
             var result = new List<Item>();
 
             if (request != null)
@@ -45,7 +44,6 @@ namespace aws.Controllers
         [HttpPost("add")]
         public IList<Item> Add([FromBody]AddRequest request)
         {
-            SetResponseHeaders();
             var result = new List<Item>();
 
             if (request != null && !String.IsNullOrEmpty(request.Item?.Name))
@@ -60,7 +58,6 @@ namespace aws.Controllers
         [HttpPost("update")]
         public IList<Item> Update([FromBody]UpdateRequest request)
         {
-            SetResponseHeaders();
             var result = new List<Item>();
 
             if (request != null)
@@ -78,7 +75,6 @@ namespace aws.Controllers
         [HttpPost("delete")]
         public IList<Item> Delete([FromBody]GetRequest request)
         {
-            SetResponseHeaders();
             var result = new List<Item>();
 
             if (request != null)
@@ -92,12 +88,6 @@ namespace aws.Controllers
                 result = items;
             }
             return result;
-        }
-
-        private void SetResponseHeaders() {
-            Response.Headers.Add("Access-Control-Allow-Methods", "POST");
-            Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token");
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
         }
     }
 }

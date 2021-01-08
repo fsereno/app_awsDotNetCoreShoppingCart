@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Models
+namespace FabioSereno.App_awsDotNetCoreShoppingCart.Models
 {
     public class GetRequest
     {

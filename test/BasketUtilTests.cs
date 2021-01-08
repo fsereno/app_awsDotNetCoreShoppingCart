@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
-using Models;
+using FabioSereno.App_awsDotNetCoreShoppingCart.Models;
+using FabioSereno.App_awsDotNetCoreShoppingCart.Interfaces;
+using FabioSereno.App_awsDotNetCoreShoppingCart.Utils;
 
-namespace Utils.Tests
+namespace FabioSereno.App_awsDotNetCoreShoppingCart.Tests
 {
     public class BasketUtilTests
     {

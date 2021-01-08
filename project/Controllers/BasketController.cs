@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Utils;
-using Models;
+using FabioSereno.App_awsDotNetCoreShoppingCart.Models;
+using FabioSereno.App_awsDotNetCoreShoppingCart.Interfaces;
 
-namespace aws.Controllers
+namespace FabioSereno.App_awsDotNetCoreShoppingCart.Controllers
 {
     [Route("api/[controller]")]
     public class BasketController : ControllerBase

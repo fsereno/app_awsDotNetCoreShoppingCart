@@ -1,4 +1,4 @@
-﻿namespace Models
+﻿namespace FabioSereno.App_awsDotNetCoreShoppingCart.Models
 {
     public class Item
     {

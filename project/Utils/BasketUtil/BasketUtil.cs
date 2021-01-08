@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
-using Models;
+using FabioSereno.App_awsDotNetCoreShoppingCart.Models;
+using FabioSereno.App_awsDotNetCoreShoppingCart.Interfaces;
 
-namespace Utils
+namespace FabioSereno.App_awsDotNetCoreShoppingCart.Utils
 {
     public class BasketUtil : IBasketUtil
     {

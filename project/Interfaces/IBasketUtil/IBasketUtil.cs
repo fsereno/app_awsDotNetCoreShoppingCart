@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Models;
+using FabioSereno.App_awsDotNetCoreShoppingCart.Models;
 
-namespace Utils
+namespace FabioSereno.App_awsDotNetCoreShoppingCart.Interfaces
 {
     public interface IBasketUtil
     {

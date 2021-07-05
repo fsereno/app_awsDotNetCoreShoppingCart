@@ -20,3 +20,8 @@ Execute unit tests
 ```
     dotnet test test
 ```
+
+Publish application
+```
+    dotnet publish project -c release
+```
